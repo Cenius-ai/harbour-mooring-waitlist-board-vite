@@ -1,0 +1,15 @@
+# Build context exclusions for the whole repository.
+.git
+.gitignore
+**/node_modules
+**/dist
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.venv
+*.db
+*.db-wal
+*.db-shm
+.env
+.DS_Store
+*.log

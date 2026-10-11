@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Harbour Mooring Waitlist Board - API service</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/api-status.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Harbour Mooring Waitlist Board</h1>
+      <p class="lede">
+        Mooring buoys by bay with depth and swing radius, the owner waitlist per mooring size,
+        and annual inspections recorded with chain wear.
+      </p>
+      <p class="notice">
+        The compiled single-page app has not been built yet, so this service is serving its
+        status page instead. Run <code>npm install &amp;&amp; npm run build</code> in
+        <code>frontend/</code> (or <code>bash install.sh</code> from the repository root) and
+        reload - the interface is served from this same origin.
+      </p>
+      <ul class="links">
+        <li><a href="/api/health">Service health</a> - <code>{"status": "ok"}</code></li>
+        <li><a href="/api/openapi.json">OpenAPI schema</a></li>
+      </ul>
+      <p class="foot">
+        Staff sign-in is at <code>/login</code> once the interface is built. Demo credentials:
+        <strong>cenius@cenius.ai / cenius</strong>
+      </p>
+    </main>
+  </body>
+</html>
