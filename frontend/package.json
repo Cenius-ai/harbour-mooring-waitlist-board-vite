@@ -1,0 +1,29 @@
+{
+  "name": "harbour-mooring-board-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Harbour Mooring Waitlist Board - React single-page app served by nginx in the container, proxying /api to the FastAPI service.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/chakra-petch": "5.3.0",
+    "@fontsource/rajdhani": "5.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.30.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.2",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "typescript": "5.6.3",
+    "vite": "6.4.3"
+  }
+}

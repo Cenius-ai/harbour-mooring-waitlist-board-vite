@@ -1,0 +1,26 @@
+# Local environment and secrets
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# SQLite databases (created on first boot)
+*.db
+*.db-wal
+*.db-shm
+harbour.db*
+
+# Node / Vite
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Tooling
+.DS_Store
+*.log

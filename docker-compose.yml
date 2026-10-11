@@ -1,0 +1,77 @@
+# Harbour Mooring Waitlist Board - the non-negotiable two-service layout.
+#
+#   api  FastAPI + Uvicorn, SQLite on the named volume `harbour-data`
+#   web  nginx serving the compiled Vite bundle and reverse-proxying /api
+#
+# Bring it up with:  docker compose up --build
+#
+# The board is served on the docker host at the web port (default 5173) and the
+# API at the api port (default 8000, health at /api/health). Nothing here pins a
+# host name, so the same file works on a laptop and behind a real domain:
+#
+#   WEB_PORT=8080 API_PORT=8081 docker compose up --build
+#
+# When the app answers on a public name, tell the API which origins may call it
+# directly. The SPA itself is same-origin through nginx, so this only affects
+# direct API clients; the local development origins are the application default
+# (see backend/app/config.py and .env.example):
+#
+#   CORS_ORIGINS=https://board.example.org docker compose up --build
+#
+# Sign in with the seeded demo staff account: cenius@cenius.ai / cenius
+name: harbour-mooring-board
+
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: harbour-mooring-board-api:latest
+    environment:
+      # Persisted on the named volume below so seeded data and staff edits survive
+      # container restarts. Override to point at another SQLAlchemy URL.
+      DATABASE_URL: ${DATABASE_URL:-sqlite:////data/harbour.db}
+      SEED_ON_START: "true"
+      DEBUG: "false"
+      # Port the API binds INSIDE the container; the published host port below is
+      # API_PORT.
+      PORT: "8000"
+      # Local default in the application config; set a real value in the
+      # environment (or a root .env file) for anything but local use.
+      SESSION_SECRET: ${SESSION_SECRET:-cenius-dev-4b7e1d92c05a8f36}
+      # Forwarded straight through. Left blank, the application applies its own
+      # local development origins, so no host name is baked into this file.
+      CORS_ORIGINS: ${CORS_ORIGINS:-}
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      - harbour-data:/data
+    healthcheck:
+      # Opens a TCP connection to the port the API binds (read from the
+      # environment), so no address is repeated here.
+      test:
+        - CMD
+        - python
+        - -c
+        - "import os,socket,sys; s=socket.socket(); s.settimeout(3); sys.exit(0 if s.connect_ex(('127.0.0.1', int(os.environ.get('PORT','8000')))) == 0 else 1)"
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: harbour-mooring-board-web:latest
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "${WEB_PORT:-5173}:80"
+    restart: unless-stopped
+
+volumes:
+  harbour-data:
+    name: harbour-mooring-board-data
