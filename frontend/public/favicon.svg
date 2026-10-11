@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Harbour Mooring Waitlist Board">
+  <rect width="32" height="32" rx="7" fill="#0c0c11" />
+  <path d="M16 5.5v18" stroke="#9884f3" stroke-width="2" stroke-linecap="round" />
+  <circle cx="16" cy="5.5" r="2.6" fill="#9884f3" />
+  <path d="M9 12.5h14" stroke="#9d9da6" stroke-width="2" stroke-linecap="round" />
+  <path d="M16 24.5c-4.4 0-8-2.6-8.6-6h17.2c-.6 3.4-4.2 6-8.6 6Z" fill="#9884f3" opacity="0.55" />
+</svg>

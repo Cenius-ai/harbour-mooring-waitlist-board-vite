@@ -1,0 +1,98 @@
+/* ---------------------------------------------------------------------------
+   Harbour Mooring Waitlist Board - design tokens.
+
+   The single source of truth for the committed visual direction: a calm, dark
+   harbour-blue instrument panel with one violet accent, Rajdhani for headings
+   and Chakra Petch for body copy. Everything below is consumed by components;
+   no component declares a raw colour of its own.
+   --------------------------------------------------------------------------- */
+
+:root {
+  /* Committed palette - verbatim */
+  --background: #0c0c11;
+  --foreground: #efeff5;
+  --card: #16161d;
+  --card-foreground: #efeff5;
+  --muted: #212127;
+  --muted-foreground: #9d9da6;
+  --border: #2d2d34;
+  --accent: #9884f3;
+  --on-accent: #111111;
+  --primary: #9884f3;
+  --on-primary: #111111;
+  --secondary: #212127;
+  --on-secondary: #efeff5;
+  --destructive: #c9302d;
+  --on-destructive: #ffffff;
+  --ring: #9884f3;
+
+  /* Accent ramp. oklch() is available to CSS only; anything drawn to a canvas
+     would be handed the hex twin (#9884f3) instead. */
+  --accent-oklch: oklch(0.68 0.16 290);
+  --accent-soft: rgba(152, 132, 243, 0.14);
+  --accent-line: rgba(152, 132, 243, 0.34);
+
+  /* Status colours - always paired with a word, never colour alone */
+  --success: #4fa878;
+  --success-soft: rgba(79, 168, 120, 0.16);
+  --warning: #d99a3c;
+  --warning-soft: rgba(217, 154, 60, 0.16);
+  --danger: #d9534f;
+  --danger-soft: rgba(201, 48, 45, 0.16);
+  --info: #6b9fd4;
+  --info-soft: rgba(107, 159, 212, 0.16);
+
+  /* Data-update flash (the precision tick) */
+  --flash-added: rgba(79, 168, 120, 0.12);
+  --flash-removed: rgba(201, 48, 45, 0.12);
+
+  /* Type */
+  --font-heading: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Chakra Petch', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --text-display: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-title: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+  --text-section: 1.0625rem;
+  --text-body: 0.9375rem;
+  --text-meta: 0.8125rem;
+  --text-micro: 0.75rem;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Depth */
+  --shadow-panel: 0 18px 40px -28px rgba(0, 0, 0, 0.9);
+  --shadow-dialog: 0 32px 80px -32px rgba(0, 0, 0, 0.85);
+
+  /* Motion */
+  --motion-micro: 120ms;
+  --motion-state: 180ms;
+  --motion-route: 280ms;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Chrome */
+  --nav-width: 220px;
+  --gutter: 24px;
+  --content-max: 1400px;
+}
+
+@media (max-width: 640px) {
+  html {
+    --gutter: 16px;
+  }
+}
