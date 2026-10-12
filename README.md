@@ -32,7 +32,7 @@ _Local clone? See [Quick start](#quick-start) below. cenius.ai is the zero-setup
 
 ## Architecture
 
-A self-contained Vite project (106 files): top-level directories include `backend/`, `frontend/`, `scripts/`. Run `./install.sh` once to install packages and populate demo data — the app is ready to use immediately after. Step-by-step setup guide: [`INSTALL.md`](INSTALL.md).
+A self-contained Vite project (95 files): top-level directories include `backend/`, `frontend/`, `scripts/`. Run `./install.sh` once to install packages and populate demo data — the app is ready to use immediately after. Step-by-step setup guide: [`INSTALL.md`](INSTALL.md).
 
 ## Quick start
 
